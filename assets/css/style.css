@@ -1,0 +1,16 @@
+/* adding a background image to the whole page */
+body {
+	background-image: url('../images/B_W_train.png');
+	background-attachment: fixed ;
+	background-position: center;
+}
+
+/* making the panels opaque  */
+.panel-opacity {
+	opacity: 0.9;
+
+}
+/* adding margin at the top of the page  */
+.mainHeading {
+	margin-top: 20px;
+}
