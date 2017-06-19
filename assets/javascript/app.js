@@ -15,9 +15,9 @@
 
     var trainName = "";
     var destination = "";
-    var frequency = "";
+    var frequency = 0;
     var nextArrival = "";
-    var minutesAway = "";
+    var minutesAway = 0;
 
     $("#addTrain").on("click", function(event) {
  
@@ -46,32 +46,35 @@
     console.log(childSnapshot.val());
 
     // Store everything into a variable.
-    var empName = childSnapshot.val().name;
-    var empRole = childSnapshot.val().role;
-    var empStart = childSnapshot.val().start;
-    var empRate = childSnapshot.val().rate;
+    var trainName = childSnapshot.val().trainName;
+    var destination = childSnapshot.val().destination;
+    var firstTrainTime = childSnapshot.val().firstTrainTime;
+    var frequency = childSnapshot.val().frequency;
 
     // Train Info
-    console.log(empName);
-    console.log(empRole);
-    console.log(empStart);
-    console.log(empRate);
+    console.log(trainName);
+    console.log(destination);
+    console.log(firstTrainTime);
+    console.log(frequency);
 
-    // Prettify the employee start
-    var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
+    // convert to unix for calculations
+    //var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
 
-    // Calculate the months worked using hardcore math
-    // To calculate the months worked
-    var empMonths = moment().diff(moment.unix(empStart, "X"), "months");
-    console.log(empMonths);
+    // Calculate the next arrival time
+    //var empMonths = moment().diff(more than 59 min display in hours
 
-    // Calculate the total billed rate
-    var empBilled = empMonths * empRate;
-    console.log(empBilled);
+    // Calculate how many minutes away the next train is
+    //if it is more than 59 min display in hours
+    //var empBilled = empMonths * empRate;
+    //console.log(empBilled);
 
-    // Add each train's data into the table
-    $("#employee-table > tbody").append("<tr><td>" + empName + "</td><td>" + empRole + "</td><td>" +
-    empStartPretty + "</td><td>" + empMonths + "</td><td>" + empRate + "</td><td>" + empBilled + "</td></tr>");
+    // display data in the window 
+    $("#trainSchedule > tbody").append("<tr><td>" + trainName +
+                                       "</td><td>" + destination +
+                                       "</td><td>" + frequency + 
+                                       "</td><td>" + nextArrival + 
+                                       "</td><td>" + minutesAway + 
+                                       "</td></tr>");
 });
 
 
