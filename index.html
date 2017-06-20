@@ -15,6 +15,11 @@
     <!-- Moment.js  -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
 
+    <!-- jquery form validator links  -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
+    rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
     <!-- App Styles & JS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="assets/javascript/app.js"></script>
@@ -65,22 +70,22 @@
             </div>
             <div class="panel-body">
 
-              <form>
+              <form id="addTrainForm">
                 <div class="form-group">
                   <label for="trainName">Train Name</label>
-                  <input class="form-control" id="trainName" type="text">
+                  <input class="form-control" id="trainName" type="text" data-validation = "alphanumeric" data-validation-allowing = "-_" data-validation-ignore = " " data-validation-help = "enter a valid Train name" >
                 </div>
                 <div class="form-group">
                   <label for="destination">Destination</label>
-                  <input class="form-control" id="destination" type="text">
+                  <input class="form-control" id="destination" type="text" data-validation = "alphanumeric" data-validation-allowing = "-_" data-validation-ignore = " " data-validation-help = "enter a valid destination city or town">
                 </div>
                 <div class="form-group">
                   <label for="firstTrainTime">First Train Time (HH:mm - military time)</label>
-                  <input class="form-control" id="firstTrainTime" type="text" value="00:00">
+                  <input class="form-control" id="firstTrainTime" type="text" value="00:00" data-validation = "time" data-validation-help = "HH:mm">
                 </div>
                 <div class="form-group">
                   <label for="frequency">Frequency (min)</label>
-                  <input class="form-control" id="frequency" type="text" value = "0">
+                  <input class="form-control" id="frequency" type="text" value = "0" data-validation = "number" data-validation-help = "enter frequency in minutes">
                 </div>
                 <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
               </form>
@@ -103,6 +108,17 @@
 
     </div>
 
+
+  <!-- code to validate the user input to add the trains -->  
+  <script>
+    $.validate({
+      modules : "date",
+      form : '#addTrainForm'
+    });
+
+    $("#addTrainForm").get(0).reset();
+
+  </script>
           
 
   </body>
