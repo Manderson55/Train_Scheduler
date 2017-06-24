@@ -29,7 +29,6 @@
   <body>
 
     <!-- background for the whole page  -->
-
     <div class="container">
       <!-- jumbotron for headings -->
       <div class="jumbotron mainHeading" style="background-color: green; color: white">
@@ -37,10 +36,7 @@
         <h5 class="text-center">Choo Choo, Chee Chee</h5>
       </div>
 
-
-
       <div class="row">
-
         <div class="col-md-12">
           <div class="panel panel-primary panel-opacity">
             <div class="panel-heading">
@@ -70,26 +66,30 @@
             </div>
             <div class="panel-body">
 
-              <form id="addTrainForm">
+              <form id="addTrainForm" data-toggle="validator" role="form">
                 <div class="form-group">
                   <label for="trainName">Train Name</label>
-                  <input class="form-control" id="trainName" type="text" data-validation = "alphanumeric" data-validation-allowing = "-_" data-validation-ignore = " " data-validation-help = "enter a valid Train name" >
+                  <input class="form-control" id="trainName" type="text" required />
+            <!--      <div class="help-block with-errors"></div>  -->
                 </div>
                 <div class="form-group">
                   <label for="destination">Destination</label>
-                  <input class="form-control" id="destination" type="text" data-validation = "alphanumeric" data-validation-allowing = "-_" data-validation-ignore = " " data-validation-help = "enter a valid destination city or town">
+                  <input class="form-control" id="destination" type="text" required />
+             <!--       <div class="help-block with-errors"></div> -->
                 </div>
                 <div class="form-group">
                   <label for="firstTrainTime">First Train Time (HH:mm - military time)</label>
-                  <input class="form-control" id="firstTrainTime" type="text" value="00:00" data-validation = "time" data-validation-help = "HH:mm">
+                  <input class="form-control" id="firstTrainTime" type="text"  required />
+              <!--      <div class="help-block with-errors"></div> -->
                 </div>
                 <div class="form-group">
                   <label for="frequency">Frequency (min)</label>
-                  <input class="form-control" id="frequency" type="text" value = "0" data-validation = "number" data-validation-help = "enter frequency in minutes">
+                  <input class="form-control" id="frequency" type="number" data-minlength="1" required />
+              <!--      <div class="help-block with-errors"></div> -->
                 </div>
-                <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
+                
               </form>
-
+              <button class="btn btn-primary" id="addTrain" type="submit">Submit</button>
             </div>
 
           </div>
@@ -108,18 +108,6 @@
 
     </div>
 
-
-  <!-- code to validate the user input to add the trains -->  
-  <script>
-    $.validate({
-      modules : "date",
-      form : '#addTrainForm'
-    });
-
-    $("#addTrainForm").get(0).reset();
-
-  </script>
-          
 
   </body>
 

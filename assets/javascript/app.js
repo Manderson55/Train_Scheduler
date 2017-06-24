@@ -15,11 +15,11 @@
 
     var trainName = " ";
     var destination = " ";
-    var frequency = 0;
+    var frequency = "";
     var nextArrival = " ";
     var minutesAway = 0;
     var hoursAway = 0;
-    var firstTrainTime = "00:00" //military time
+    var firstTrainTime = "" //military time
     var inputError = false; //if there was a problem with the input
     var timeOfDay = "";
 
@@ -53,8 +53,8 @@
           // Clear all of the input boxes after train is added
           $("#trainName").val("");
           $("#destination").val("");
-          $("#firstTrainTime").val("00:00");
-          $("#frequency").val("0");
+          $("#firstTrainTime").val("");
+          $("#frequency").val("");
 
   
   }); //end add train on click
